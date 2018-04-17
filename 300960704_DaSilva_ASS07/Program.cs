@@ -16,7 +16,7 @@ namespace _300960704_DaSilva_ASS07
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new DownloadForm());
         }
     }
 }
