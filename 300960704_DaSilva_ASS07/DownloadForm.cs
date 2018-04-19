@@ -9,30 +9,38 @@ namespace _300960704_DaSilva_ASS07
 {
     public partial class DownloadForm : Form
     {
+        private List<string> pageList = new List<string>()
+        {
+            "http://www.globo.com",
+            "http://www.uol.com.br",
+            "http://www.centennialcollege.ca",
+            "https://docs.microsoft.com",
+            "https://www.xbox.com",
+            "https://github.com/",
+            "http://www.ttc.ca/",
+            "https://www.google.ca/",
+            "https://www.apple.com/ca/",
+            "https://www.youtube.com/",
+            "https://www.facebook.com/",
+            "https://unity.com/madewith",
+            "https://www.unrealengine.com/en-US/blog",
+        };
+
         public DownloadForm()
         {
             InitializeComponent();
+            PagesToDownloadTextBox.Text = "The following pages will be downloaded in parallel:\r\n";
+            foreach (string p in pageList)
+            {
+                PagesToDownloadTextBox.Text += p + "\r\n";
+            }
+            PagesToDownloadTextBox.Text += "\r\nTo download the pages above click the button Download Pages.\r\n";
         }
 
         private async void DownloadPagesButton_Click(object sender, EventArgs e)
         {
             StatusTextBox.Text = "";
-            await DownloadPages(new List<string>()
-            {
-                "http://www.globo.com",
-                "http://www.uol.com.br",
-                "http://www.centennialcollege.ca",
-                "https://docs.microsoft.com",
-                "https://www.xbox.com",
-                "https://github.com/",
-                "http://www.ttc.ca/",
-                "https://www.google.ca/",
-                "https://www.apple.com/ca/",
-                "https://www.youtube.com/",
-                "https://www.facebook.com/",
-                "https://unity.com/madewith",
-                "https://www.unrealengine.com/en-US/blog",
-            });
+            await DownloadPages(pageList);
             MessageBox.Show("All pages downloaded successfully!", "Download Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     
